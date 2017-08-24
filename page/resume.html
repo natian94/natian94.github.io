@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>简历制作</title>
+		<!--bootstrap引入-->
+		<link rel="stylesheet" href="../css/buttoncss.css">
+		<link rel="stylesheet" href="../css/index.css">
+		<link href="../bootstrap-3.3.7-dist/css/bootstrap.css" rel="stylesheet">
+		<!--jquery引入-->
+		<script src="../jq/jquery-3.1.0.js"></script>
+        <script src="../jq/jquery.easing.imn.js"></script>
+        <!--jsPDF,html2canvas引入-->
+        <script src="../jq/jsPDF-master/dist/jspdf.min.js"></script>
+        <script src="../jq/html2canvas.js"></script>
+		<!--bootstrap引入-->
+		<script src="../bootstrap-3.3.7-dist/js/bootstrap.js"></script>
+		<script src="../jq/vue.js"></script>
+		<script src="../jq/resume.js"></script>
+        <style type="text/css">
+        body{
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+        	}
+        .sec_3_top{
+        border-left: 1px solid #f0f0f0;
+        border-right: 1px solid #f0f0f0;
+        height: 100%;
+        color: #ccc;
+        border-bottom: 1px solid rgb(240,240,240);
+        overflow-x: hidden;
+        
+        }	
+        .sec_3_top button{
+        	width: 80px;
+        	height: 35px;
+        	border-radius: 5px;
+        	outline: none;
+        	border: none;
+        	font-size: 13px;
+        	background-color: white;
+        	border: 1px solid #00C091;
+        	color: #00C091;
+        	background-position-x: 5px;
+        	background-repeat: no-repeat;
+        	background-position-y: 8px;
+        } 
+        .sec_3_top_btn{
+        	color: #00C091;
+        	width: 90px;
+        	height: 35px;
+        	border-radius: 5px;
+        	outline: none;
+        	border: 1px solid #00C091;
+        	background-color: transparent;
+        }
+        .sec_3_top_btn:hover{
+        	background-color:#00C091 ;
+        	color: white;
+        }
+        .sec_3_left{
+        	margin: 0;
+        	background-color:#00C091 ;
+        	height: 900px;
+        	padding: 0;
+        	overflow-x: hidden;
+        }
+        .sec_3_right_btn{
+        	width: 100%;
+        	height: 54px;
+        	background-color: rgb(250,250,250);
+        	margin-top: 15px;
+        	border: none;
+        	outline: none;
+        	background-image: url(../img/20170808095024.png);
+        	background-repeat:no-repeat ;
+        	background-position: 20% 50%;
+        	color: #5a5a5a;
+        }
+        .sec_3_right_btn:hover{
+        	background-color: rgb(238,238,238);
+        }
+        .sec_3_right_div{
+        	width: 100%;
+        	border: 1px solid #f0f0f0;
+        	height: 700px;
+        	border-top: none;
+        	padding-left: 5px;
+        }
+        .sec_3_right_div div{
+        	padding: 10px;
+        	height: 40px;
+        	color: #777;
+        	font-size: 15px;
+        }
+        .sec_3_right_div div:hover{
+        	background-color: rgb(246,246,246);
+        }
+        .sec_3_right_span{
+        	background:transparent;
+        	border: 1px solid #666666;
+        	margin-right: 10px;
+        }
+        .sec_3_right_span span{
+        	color: #666666;
+        }
+        .sec_3_right_span_1{
+        	float: right;
+        	background-color:#00C091 ;
+        	margin-top: 3px;
+        }
+        .sec_3_right_span_1:hover{
+        	background-color: red;
+        }
+        .sec_3_right_span_2{
+        	background-color: rgb(166,233,216);
+        	float: right;
+        	margin-top: 3px;
+        }
+        .sec_3_right_span_2:hover{
+        	background-color:#00C091 ;
+        }      
+        .sec_3_main_img{
+         border:3px solid white;
+         margin: 0 auto;
+         display: block	;
+        } 
+        .sec_3_main_div_1{
+        	width: 125px;
+        	height: 160px;        	
+        	position: relative;
+        }
+        .sec_3_main_div_1_show{
+        	display: none;
+        	background-image: url(../img/upheadimg.png);
+        	background-repeat: no-repeat;
+        	background-position: 50% 50%;
+        	position: absolute;
+        	width:125px;
+        	height:160px;
+        	background-color: rgb(77,173,180);
+        	opacity: 0.7;
+        	top: 0;
+        	left: 0;
+        	
+        }
+        .sec_3_main_div_1:hover .sec_3_main_div_1_show{
+        	display: block;
+        }
+        .sec_3_main_div{
+        	width: 100%;
+        	margin: 0;
+        	padding-top: 5px;
+        }
+        .sec_3_main_div:hover{
+        	border-top:1px dashed #00C091;
+        	border-bottom:1px dashed #00C091;
+        }
+        .sec_3_main_div:hover button{
+        	display: block;
+        }
+        .sec_3_main_div button{
+        	display: none;
+        	border: none;
+        	outline: none;
+        	height: 25px;
+        	width: 25px;
+        	float: right;
+        	border-radius:5px ;
+        	background-color: #00C091;
+        	margin-left: 5px;
+        }
+        .sec_3_main_div p{
+        	padding: 2px;
+        	color: white;
+        	font-size: 14px;
+        }
+        .sec_3_main_div input{
+        	color: white;
+        	border: none;
+        	outline: none;
+        	width: 60%;
+        	padding: 2px;
+        	font-size: 14px;
+        	background: transparent;
+        }
+        .sec_3_main_div p:hover{
+        	border: 1px dashed #00C091;
+        }
+        .sec_3_main_div p:hover .sec_3_main_span_1{
+        	display: inherit;
+        }
+        .sec_3_main_span_1{
+        	display: none;
+        	float: right;
+        	background-color: red;
+        }
+        .sec_3_main_btn{
+        	width: 100%;
+        	height: 80px;
+        	border: none;
+        	border-top: 1px dashed white;
+        	border-bottom: 1px dashed white;
+        	text-align: center;
+        	font-size: 16px;
+        	color: white;
+        	padding-top: 6%;
+        	background: transparent;
+        	outline: none;
+        }
+        .sec_3_main_btn span{
+        	background-color: rgb(184,239,229);
+        	color: black;
+        	margin-right: 10px;
+        }
+        .sec_3_main_btn:hover span{
+        	background-color:rgb(154,205,203)
+        }
+        .sec_3_main_btn:hover{
+        	color: rgb(192,202,211);
+        }
+        .sec_3_main_right_div{
+        	width: 100%;
+        	padding-left: 22px;
+        }
+        .sec_3_main_right_div:hover{
+        	border: 1px dashed #00C091;
+        }
+        .sec_3_main_right_div button{
+         	display: none;
+        	border: none;
+        	outline: none;
+        	height: 25px;
+        	width: 25px;
+        	float: right;
+        	border-radius:5px ;
+        	background-color: #00C091;
+         }
+        .sec_3_main_right_div:hover button{
+        	display: block;
+        }         
+        .sec_3_main_right_div p{
+         	padding: 15px 0;
+         	width: 90%;
+         	margin-top: 10px;
+         	color: rgb(173,148,134);
+         	font-size: 14px;
+         }  
+         .sec_3_main_right_div p:hover{
+         	background-color: rgb(230,250,244);
+         } 
+         .sec_3_main_right_div input,textarea,ul{
+         	border: none;
+         	outline: none;
+         	color: #878686;
+         }
+         .sec_3_main_right_div input:focus,textarea:focus{
+         	border: 1px dashed #00C091;
+         }
+         .sec_3_main_right_div ul{
+         	margin-top: 10px;
+         }
+         .sec_3_main_right_div ul li{
+         	margin-top: 6px;
+         }
+         .sec_3_main_right_div ul:hover{
+         	border: 1px dashed #00C091;
+         }
+         .sec_3_main_right_btn{
+         	width: 100%;
+            color: #4b4b4b;;
+            background: transparent;
+            border: none;            
+            outline: none;
+            padding-top: 20px;
+         }
+         .v_for_btn{
+         	outline: none;
+         	background-color:rgb(127,224,199) ;
+         	border-radius:15px ;
+         	height: 25px;
+         	color: white;
+         	font-size: 15px;
+         	margin-left: 20px;
+         	border: none;
+         	margin-top: 20px;
+         	padding-left: 5px;
+         }
+         .v_for_btn:hover{
+         	background-color: #00C091;
+         }
+         
+         #v_for_btn_id:hover{
+         	background-color: red;
+         }
+         #box_shadow a img:hover{
+         	-webkit-box-shadow:0 0 10px rgb(37,70,101);  
+            -moz-box-shadow:0 0 10px rgb(37,70,101);  
+            box-shadow:0 0 10px rgb(37,70,101); 
+         }
+         #scroll_style::-webkit-scrollbar {
+                 display: none;
+             }
+          #phone_img:hover .sec_3_main_div_1_show{
+        	display: block;
+        }
+        .phone_div{
+        	width: 100%;
+        	margin-top: 20px;
+        }
+        .phone_div input{
+        	width: 100px;
+        	border: none;
+        	background: transparent;
+        }
+        .phone_div textarea{
+        	background: transparent;
+        }
+        .phone_div:hover{
+        	border: 1px dashed #00C091;
+        }
+        .phone_div:hover button{
+        	display: block;
+        }
+        .phone_div button{
+        	border: none;
+        	outline: none;
+        	background-color: #00C091;
+        	float: right;
+        	display: none;
+        }
+        #resume_img::-webkit-scrollbar {/*隐藏滚轮*/
+           display: none;
+          }
+        </style>
+	</head>
+	<body>
+		
+		<div class="container-fluid" style="padding: 0;">
+			<!--顶部导航-->
+			<div class="row hidden-xs" style="height: 65px;background-color: white;padding-top: 15px;">
+				<img src="../img/LOGO.png" class="col-md-1 col-sm-1 " style="margin-top: 15px;">
+				<div class="col-md-6 col-sm-6 sec_3_top" >
+					<button style="background-image: url(../img/20170807154606.png);">&nbsp;&nbsp;&nbsp;分享</button>
+				    <span style="margin-left: 30%;" class="hidden-xs"></span>文档实时更新<button style="background-color: #00b589;color: white;float: right;">升级会员</button>
+				</div>
+				<div class="col-md-2 col-sm-2" style="border-right:1px solid #f0f0f0;height: 100%;text-align: center;border-bottom: 1px solid rgb(240,240,240);">
+					<button  class="sec_3_top_btn"><span class="glyphicon glyphicon-download-alt" style="margin-right: 10px;" onclick="donload_pdf()"></span>PDF</button>
+				</div>
+				<div class="col-md-1 col-sm-1" style="text-align: center;border-bottom: 1px solid rgb(240,240,240);height: 100%;">
+					<button style="border: none;outline: none;background: transparent;background-image: url(../img/20170807160856.png);width: 20px;height: 29px; " id="phone_btn" onclick="$('#pc_btn').show();document.getElementById(this.id).style.display='none'; $('.resume_img').css('display','none');$('#resume_img_phone').css('display','block');" ></button>
+				    <button style="border: none;outline: none;background: transparent;background-image: url(../img/20170818113411.png);width: 35px;height: 29px;display: none;" id="pc_btn" onclick="$('#phone_btn').show();document.getElementById(this.id).style.display='none' ;$('#resume_img_phone').css('display','none');$('.resume_img').css('display','block');"></button>	
+				</div>
+				<div class="col-md-2 col-sm-2" style="border-bottom: 1px solid rgb(240,240,240);">
+					<button style="background-color:#00C091 ;outline: none;width: 100%;height: 63px;border: none;margin-top: -14px;color: white;" onclick="get_img()">预览</button>
+					</div>
+			</div>
+			<!--左侧导航-->
+		    <div class="col-md-1 hidden-sm sec_3_left hidden-xs" >
+		    	<div class="col-md-12 col-sm-12" style="height: 85px;border-bottom: 1px solid rgb(133,211,179);text-align: center;padding-top:20px ;">
+					<button style="background: transparent;border: 1px solid rgb(133,211,179);height:50px;width: 100%;border-radius:5px ;outline: none;color: white">我的简历</button>
+				</div>
+				<div class="col-md-12 col-sm-12" style="padding-top: 36px ; " id="box_shadow">
+					<a href="#" ><img src="../img/20170807163337.png" ></a>
+					<a href="#" ><img src="../img/20170817094954.png" style="margin-top: 100px;"></a>
+					<a href="#" ><img src="../img/20170807163408.png" style="margin-top: 100px;"></a>
+					<a href="#" ><img src="../img/20170807163435.png" style="margin-top: 100px;"></a>
+				</div>
+		    </div>
+		    <!--手机简历-->
+		    <div class="col-md-9 col-sm-9" style="margin: 0;margin-top: 30px;display: none;" id="resume_img_phone">
+		    	<div  style="width: 328px;margin: 50px auto;">
+		    		<div style="width: 100%;height: 62px;background-image: url(../img/mobile_head.jpg);"></div>
+		    		<div style="width: 99%;border: 2px solid rgb(226,226,226);border-top:none;border-bottom: none;height: 550px;box-sizing: border-box;margin-left: 2px;overflow-y: scroll;" id="scroll_style">
+		    			<div id="test_div"><div  style="width: 100%;height: 200px;background-image: url(../img/j3_head.png);background-size:100% 200px ;" ></div>
+		    		    <div style="position: relative;border: 3px solid rgb(226,226,226);float: right;margin-right: 10px;margin-top: -20px;" id="phone_img">
+		    		      <img style="width: 126px;height: 161px;" src="../img/20170808110616.png" id="phone_img_file">
+		    		      <div class="sec_3_main_div_1_show" style="width: 126px;"><input type="file" style="width: 126px;height: 161px;opacity: 0;"  accept="image/*" id="phone_file" onchange="handleFiles(this.files,this.id,'phone_img_file','126px','160px')"></div>
+		    		    </div>
+		    		    <div class="clearfix"></div>
+		    		    <div style="width: 100%;height: 150px;margin-top: -40px;">
+		    		    	<img src="../img/j3_name.png" width="40px" height="150px" style="float: left;">
+		    		    	<div style="height: 133px;background-color: rgb(88,155,247);width:280px;float: left;margin-top: -24px;padding: 20px;">
+		    		    		<div><input type="text" value="你的名字" style="width: 120px;font-size: 25px;color: white;border: none;background: transparent;" ></div>
+		    		    	    <textarea rows="2" style="color: white;background: transparent;border: none;width: 220px;overflow: hidden;">一句话介绍你自己，为什么HR选择的是你而不是别人</textarea>
+		    		    	</div></div>
+		    		    	<div class="clearfix"></div>
+		    		    	<!--个人资料-->
+		    		<div class="phone_div" style="height: 150px;padding-top: 10%;">
+		            <p class="col-md-6 col-sm-6  " ><span class="glyphicon glyphicon-th-list" style="margin-right: 10px;"></span><input type="text" value="23岁"></p>
+		            <p class="col-md-6 col-sm-6  " ><span class="glyphicon glyphicon-list-alt" style="margin-right: 10px;"></span><input type="text" value="汉族"></p>
+		            <p class="col-md-6 col-sm-6 " ><span class="glyphicon glyphicon-map-marker" style="margin-right: 10px;"></span><input type="text" value="珠海"></p>
+		            <p class="col-md-6 col-sm-6 " ><span class="glyphicon glyphicon-phone" style="margin-right: 10px;"></span><input type="text" value="159XXXXXXXX"></p>
+		            <p class="col-md-12 col-sm-12 " ><span class="glyphicon glyphicon-envelope" style="margin-right: 10px;"></span><input type="text" value="natian@163.com" style="width: 200px;"></p>
+		           </div>
+		           <!--求职意向-->
+		           <div class="phone_div" style="height: 200px;" id="phone_div_0">
+		           	<div style="width:150px;height:40px ;background-color: rgb(88,155,247);margin: 0 auto;margin-bottom: 30px;color: white;font-size: 18px;text-align: center;padding-top: 10px;z-index: 1;margin-top: 30px;">求职意向</div><hr style="width: 80%;margin-top: -50px;border:none;border-top:3px solid rgb(88,155,247);"  />
+		           	<p style="width: 100%;margin-top: 30px;">		           	
+		   		    <span class="glyphicon glyphicon-bookmark" style="margin-right:5px;margin-left: 30px;"></span><input type="text" value="全职" style="width: 50px;">
+		   		    <span class="glyphicon glyphicon-map-marker" style="margin-right:5px;margin-left: 15px;"></span><input type="text" value="珠海" style="width: 50px;">		   		    
+		   		    <span class="glyphicon glyphicon-check" style="margin-right:5px;margin-left: 15px;"></span><input type="text" value="4K-6K" style="width: 50px;"><br><br>
+		   		    <span class="glyphicon glyphicon-list-alt" style="margin-right: 5px;margin-left: 30px;"></span><input type="text" value="前端开发" style="width: 100px;">
+		   		    <span class="glyphicon glyphicon-list" style="margin-right:5px;margin-left: 15px;"></span><input type="text" value="随时到岗" style="width: 100px;">
+		          </p></div>
+		          <!--教育背景-->
+		           	<div class="phone_div" style="" id="phone_div_1">
+		           		<button style="margin-right: 5px;" v-on:click="delete_one(0)"><span class="glyphicon glyphicon-minus" style="color: white;"></span></button>
+		                <button style="margin-right: 5px;" v-on:click="push_one(0)"><span class="glyphicon glyphicon-plus" style="color: white;"></span></button><br>
+		           	   <div  style="width:150px ;height:40px ;background-color: rgb(88,155,247);margin: 0 auto;margin-bottom: 30px;color: white;font-size: 18px;text-align: center;padding-top: 10px;z-index: 1;">教育背景</div><hr style="width: 80%;margin-top: -50px;border:none;border-top:3px solid rgb(88,155,247);"  />
+		           	   <div  v-for="v in items" style="margin-top: 30px;padding-left: 10px;">
+		               <input type="text" v-bind:value="v.y"  style="width: 100px;color: #4b4b4b;">
+		   		       <input type="text" v-bind:value="v.u" style="width: 150px;color: #4b4b4b;margin-left: 20px;">
+		   		       <input type="text" v-bind:value="v.w" style="width: 200px;color: #4b4b4b;">
+		   		       <textarea   style="width: 100%;margin-top: 10px;margin-bottom: 10px;">主修课程：{{v.m}}</textarea >
+		           </div>
+		           	</div>
+		               	<!--实习经验-->
+		           		<div class="phone_div" style="" id="phone_div_2">
+		           		<button style="margin-right: 5px;" v-on:click="delete_one(2)"><span class="glyphicon glyphicon-minus" style="color: white;"></span></button>
+		                <button style="margin-right: 5px;" v-on:click="push_one(2)"><span class="glyphicon glyphicon-plus" style="color: white;"></span></button><br>
+		           	   <div style="width:150px ;height:40px ;background-color: rgb(88,155,247);margin: 0 auto;margin-bottom: 30px;color: white;font-size: 18px;text-align: center;padding-top: 10px;z-index: 1;">实习经验</div><hr style="width: 80%;margin-top: -50px;border:none;border-top:3px solid rgb(88,155,247);"  />
+		           	   <div  v-for="v in items_2" style="margin-top: 30px;padding-left: 10px;">
+		               <input type="text" v-bind:value="v.y"  style="width: 100px;color: #4b4b4b;">
+		   		       <input type="text" v-bind:value="v.u" style="width: 150px;color: #4b4b4b;margin-left: 20px;">
+		   		       <input type="text" v-bind:value="v.w" style="width: 200px;color: #4b4b4b;">
+		   		       <textarea  rows="2" style="width: 300px;margin-top: 10px;margin-bottom: 10px;">{{v.m}}</textarea >
+		           </div>
+		           	</div>
+		           	<!--荣誉奖项-->
+		           		<div class="phone_div" style="margin-bottom: 30px;" id="phone_div_3">
+		           		<button style="margin-right: 5px;" v-on:click="delete_one(1)"><span class="glyphicon glyphicon-minus" style="color: white;"></span></button>
+		                <button style="margin-right: 5px;" v-on:click="push_one(1)"><span class="glyphicon glyphicon-plus" style="color: white;"></span></button><br>
+		           	   <div style="width:150px ;height:40px ;background-color: rgb(88,155,247);margin: 0 auto;margin-bottom: 30px;color: white;font-size: 18px;text-align: center;padding-top: 10px;z-index: 1;">荣誉奖项</div><hr style="width: 80%;margin-top: -50px;border:none;border-top:3px solid rgb(88,155,247);"  />
+		           	    <ul style="margin-top: 30px" >
+		    	        <li v-for="v in items_1" style="margin-top: 15px;"><input style="width: 100%;" v-bind:value=v></li>
+		    	        </ul>
+		           		</div>
+		           	<!--兴趣爱好-->
+		           	<div class="phone_div" >
+		                <button style="margin-right: 10px;" data-toggle="modal" data-target="#myModal_4"><span class="glyphicon glyphicon-pencil" style="color: white;"></span></button><br>
+		           	   <div style="width:150px ;height:40px ;background-color: rgb(88,155,247);margin: 0 auto;margin-bottom: 30px;color: white;font-size: 18px;text-align: center;padding-top: 10px;z-index: 1;">兴趣爱好</div><hr style="width: 80%;margin-top: -50px;border:none;border-top:3px solid rgb(88,155,247);"  />
+		           	   <img v-for="v in items_7" v-bind:src="v.src" style="margin: 20px;margin-left: 60px;">
+		           	</div>	
+		           	<!--技能特长-->
+		           	<div class="phone_div" >
+		                <button style="margin-right: 10px;" data-toggle="modal" data-target="#myModal_3"><span class="glyphicon glyphicon-pencil" style="color: white;"></span></button><br>
+		           	   <div style="width:150px ;height:40px ;background-color: rgb(88,155,247);margin: 0 auto;margin-bottom: 30px;color: white;font-size: 18px;text-align: center;padding-top: 10px;z-index: 1;">技能特长</div><hr style="width: 80%;margin-top: -50px;border:none;border-top:3px solid rgb(88,155,247);"  />
+		           	   <div  v-for="v in items_5" style="width: 100%;color: black;font-size: 15px;margin-top: 50px;padding-left: 40px;">{{v.name}}<br>
+		        	<div class="progress "  style="padding: 0;width: 60%;height: 10px;margin-top: 5px;display: inherit;float: left;">
+                            <div class="progress-bar "  role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"  style="background-color: rgb(169,205,255);" v-bind:style="{width: v.wid}">
+                    </div></div><span style="margin-left: 25px;">{{v.hao}}</span>
+		        	</div>
+		           	</div>	
+		           		<!--自我评价-->
+		           	<div class="phone_div" style="height: 320px;" id="phone_div_4"><br><br>
+		           	   <div style="width:150px ;height:40px ;background-color: rgb(88,155,247);margin: 0 auto;margin-bottom: 30px;color: white;font-size: 18px;text-align: center;padding-top: 10px;z-index: 1;">自我评价</div><hr style="width: 80%;margin-top: -50px;border:none;border-top:3px solid rgb(88,155,247);"  />
+		           	   <textarea rows="5" style="color: black;background: transparent;border: none;width: 280px;overflow: hidden;display: block;margin: 50px auto;line-height: 2em;">为人性格开朗，乐观，抗压能力强，有较强的沟通表达能力和写作能力，对互联网行业有一定的认知，了解产品运营相关的知识，有丰富的运营推广渠道，善于对运营数据进行统计分析。</textarea>
+		           	</div>
+		           		<!--项目经验-->
+		           	<div class="phone_div"  id="phone_div_5" style="display: none;">
+		           	   <button style="margin-right: 5px;" v-on:click="delete_one(3)"><span class="glyphicon glyphicon-minus" style="color: white;"></span></button>
+		                <button style="margin-right: 5px;" v-on:click="push_one(3)"><span class="glyphicon glyphicon-plus" style="color: white;"></span></button><br>
+		           	   <div style="width:150px ;height:40px ;background-color: rgb(88,155,247);margin: 0 auto;margin-bottom: 30px;color: white;font-size: 18px;text-align: center;padding-top: 10px;z-index: 1;">项目经验</div><hr style="width: 80%;margin-top: -50px;border:none;border-top:3px solid rgb(88,155,247);"  />
+		           	   <div  v-for="v in items_3" style="margin-top: 30px;padding-left: 10px;">
+		               <input type="text" v-bind:value="v.y"  style="width: 100px;color: #4b4b4b;">
+		   		       <input type="text" v-bind:value="v.u" style="width: 150px;color: #4b4b4b;margin-left: 20px;">
+		   		       <input type="text" v-bind:value="v.w" style="width: 200px;color: #4b4b4b;">
+		   		       <textarea  rows="2" style="width: 100%;margin-top: 10px;margin-bottom: 10px;">{{v.m}}</textarea >
+		           </div>
+		           	</div>
+		           	<!--作品展示-->
+		           	<div class="phone_div"  id="phone_div_6" style="display: none;"><br><br>
+		           	   <div style="width:150px ;height:40px ;background-color: rgb(88,155,247);margin: 0 auto;margin-bottom: 30px;color: white;font-size: 18px;text-align: center;padding-top: 10px;z-index: 1;">作品展示</div><hr style="width: 80%;margin-top: -50px;border:none;border-top:3px solid rgb(88,155,247);"  />
+		           	   <div v-for="v in items_4"  style="margin-top:35px ;position: relative;">
+		   			   <input  id="phone_img_1" type="file" style="width: 300px;height: 150px;display: block;left: 0;position: absolute;opacity: 0;" onchange="handleFiles(this.files,this.id,'img_v_1','400px','200px')" >
+		   		       <img v-bind:src="v.src"  id="img_v_1" style="display: block;margin: 0 auto;width: 300px;height: 150px;" >
+		   		       <div style="width: 100%;padding-top:10px;" >
+		   		       <input type="text"  style="width: 100%;color: #4b4b4b;text-align: center;" v-bind:value="v.n"><br>
+                       <textarea  style="width: 100%;margin-top: 7px;" rows="4">{{v.m}}</textarea ></div>
+		     	       </div>
+		           	</div>		    		 
+		    		</div></div>
+		    		<div style="width: 328px;height: 41px;background-image: url(../img/mobile_bottom.jpg);">
+		    			<button style="width: 50px;height: 25px;border-radius:10px ;margin: 10px 41%;border: 3px solid white;outline: none;background-color: rgb(242,242,242);" onclick="download_img(1)"></button>
+		    			
+		    		</div>
+		    	</div>
+		    	<!-- Modal_3 -->
+                 <div class="modal fade" id="myModal_3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                      <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                      <div class="modal-header" style="background-color:#00C091 ;">
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                          <h4 class="modal-title" id="myModalLabel" style="color: white;">编辑技能特长</h4>
+                    </div>
+                <div class="modal-body " style="padding-top: 20px;">
+                	<p class="col-md-3 col-sm-3" style="color: black;">已添加技能</p><div class="clearfix"></div>
+                	<div v-for="v in items_5">
+                	<p style="color:white ;background-color: #00C091;height: 35px;border-radius:20px;padding: 5px;text-align: center;margin-top: 20px;" class="col-md-3 col-sm-3">{{v.name}}</p>
+                	<p class="col-md-5 col-sm-5 col-md-offset-2 col-sm-offset-2" style="color: #00C091 ;height: 35px;text-align: center;margin-top: 20px;border: 1px solid  #00C091;padding-top: 8px;">{{v.hao}}</p>
+                	<button  style="margin-left: 20px;margin-top: 25px;width:20px;height: 20px;border-radius:20px;background-color: #00C091;border: none;" v-on:click = "delete_one('5',v.id)" ><span class="glyphicon glyphicon-remove" style="color: white;margin-left: -3px;"></span></button>
+                	<div class="clearfix"></div></div><hr>
+                	<select class="col-md-3 col-sm-3 " id="select_id_phone" style="color: #00C091 ;height: 45px;text-align: center;margin-top: 20px;outline: none;border: 1px solid  #00C091;">
+                		<option value="90%">精通</option>
+                		<option value="80%">熟练</option>
+                		<option value="70%">掌握</option>
+                		<option value="60%">了解</option>
+                	</select>
+                  <input type="text" id="input_id_phone" class="col-md-6 col-sm-6  col-md-offset-1 col-sm-offset-1 " placeholder="添加新技能" style="height: 45px;border-bottom-left-radius:20px;border-top-left-radius:20px;border: 1px solid  #00C091;outline: none;border-right: none;color: rgb(100,220,179);font-size: 14px;background: transparent;margin-top: 20px;">
+        		<button v-on:click=push_one(5)   class="col-md-1 col-sm-1 " style="float:left;height: 45px;outline: none;background: transparent;border: 1px solid  #00C091;border-left:none ;border-bottom-right-radius:20px;border-top-right-radius:20px;background-repeat: no-repeat;margin-left: -4px;margin-top: 20px;"><span class="glyphicon glyphicon-ok" style="color: #00C091;margin-left: -15px;"></span></button>
+                <div class="clearfix"></div>
+                </div>
+                    <div class="modal-footer">                    	
+                       <button type="button" class="btn btn-default" data-dismiss="modal" style="background-color: rgb(237,237,237);width: 100px;height: 30px;margin-right: 20%;">取消</button>
+                       <button type="button" class="btn btn-primary" data-dismiss="modal" style="background-color: #00C091;border: none;width: 100px;height: 30px;float: left;margin-left: 20%;">保存</button>
+                    </div>
+                 </div>
+                  </div>
+                 </div>
+                 <!-- Modal_3 -->
+                 <!-- Modal _4-->
+                 <div class="modal fade" id="myModal_4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                      <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                      <div class="modal-header" style="background-color:#00C091 ;border: none;">
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                          <h4 class="modal-title" id="myModalLabel" style="color: white;">编辑技能特长</h4>
+                    </div>
+                <div class="modal-body " style="padding-top: 20px;">
+                	<p  style="color: black;text-align: center;color:#8d8d8d ;">常用兴趣爱好</p>
+                	<button class="v_for_btn" v-for="v in items_6" v-on:click="push_one('6',v.id)">
+                	 {{v.name}}
+                	</button>
+                	<p  style="color: black;text-align: center;color:#8d8d8d ;margin-top: 70px;">已添加兴趣爱好</p>
+                	<button class="v_for_btn" v-for="v in items_7" id="v_for_btn_id" v-on:click="delete_one('6',v.id)">
+                	 {{v.name}}
+                	</button>
+                </div>
+                    <div class="modal-footer">
+                    	<button type="button" class="btn btn-primary" data-dismiss="modal" style="background-color: #00C091;border: none;width: 100px;height: 30px;float: left;margin-left: 20%;">保存</button>
+                       <button type="button" class="btn btn-default" data-dismiss="modal" style="background-color: rgb(237,237,237);width: 100px;height: 30px;margin-right: 20%;">取消</button>                       
+                    </div>
+                 </div>
+                  </div>
+                 </div>
+                 <!-- Modal _4-->
+		    </div>		    
+		    <!--电脑简历-->
+		   	<div class="col-md-9 col-sm-12 resume_img" style="margin-top: 30px;" >		   		
+		   	 <div style="width: 823px;margin: 0 auto;height: 870px;overflow-y:scroll;" id="resume_img">
+		   	 	<!--左侧简历-->
+		   	 	<div  style="height: 1350px;background-color: rgb(37,70,101);padding-top: 80px;overflow: hidden;width: 270px;float: left;" id="sec_3_main_div_id">
+		   		<div  class="sec_3_main_div_1" style="margin: 0 auto;">
+		   			<img width="125px" class="sec_3_main_img" height="160px"  src="../img/20170808110616.png" id="img_file">
+		   			<div class="sec_3_main_div_1_show" ><input type="file" style="width: 100%;height: 100%;opacity: 0;"  accept="image/*" id="file" onchange="handleFiles(this.files,this.id,'img_file','125px','160px')"></div>
+		        </div>
+		        <div class="sec_3_main_div" style="margin-top: 10px;height: 220px;">
+		        	<br>
+		            <p class="col-md-10 col-sm-10 col-md-offset-1 col-sm-offset-1" ><span class="glyphicon glyphicon-th-list" style="margin-right: 10px;"></span><input type="text" value="23岁"></p>
+		            <p class="col-md-10 col-sm-10 col-md-offset-1 col-sm-offset-1" ><span class="glyphicon glyphicon-list-alt" style="margin-right: 10px;"></span><input type="text" value="汉族"></p>
+		            <p class="col-md-10 col-sm-10 col-md-offset-1 col-sm-offset-1" ><span class="glyphicon glyphicon-map-marker" style="margin-right: 10px;"></span><input type="text" value="珠海"></p>
+		            <p class="col-md-10 col-sm-10 col-md-offset-1 col-sm-offset-1" ><span class="glyphicon glyphicon-phone" style="margin-right: 10px;"></span><input type="text" value="159XXXXXXXX"></p>
+		            <p class="col-md-10 col-sm-10 col-md-offset-1 col-sm-offset-1" ><span class="glyphicon glyphicon-envelope" style="margin-right: 10px;"></span><input type="text" value="natian@163.com" style="width: 150px;"></p>
+		        </div>
+		        <div class="sec_3_main_div" style="padding-left: 10%;" >
+		        	<button style="margin-right: 10px;" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-pencil" style="color: white;"></span></button>
+		        	<img src="../img/20170808141419.png">
+		        	<div v-for= "v in data_1">
+		        	<div  style="width: 100%;color: white;font-size: 15px;margin-top: 10px;">{{v.name}}<br>
+		        	<div class="progress "  style="padding: 0;width: 60%;height: 10px;margin-top: 5px;display: inherit;float: left;">
+                            <div class="progress-bar "  role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" v-bind:style="{width: v.wid}" style="background-color: #4487c6;">
+                    </div></div><span style="margin-left: 15px;">{{v.hao}}</span>
+		        	</div><br></div>
+		        	<!-- Modal -->
+                 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                      <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                      <div class="modal-header" style="background-color:#00C091 ;">
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                          <h4 class="modal-title" id="myModalLabel" style="color: white;">编辑技能特长</h4>
+                    </div>
+                <div class="modal-body " style="padding-top: 20px;">
+                	<p class="col-md-2 col-sm-2" style="color: black;">已添加技能</p><div class="clearfix"></div>
+                	<div v-for="v in data_1">
+                	<p style="color:white ;background-color: #00C091;height: 35px;border-radius:20px;padding: 5px;text-align: center;margin-top: 20px;" class="col-md-3 col-sm-3">{{v.name}}</p>
+                	<p class="col-md-5 col-sm-5 col-md-offset-2 col-sm-offset-2" style="color: #00C091 ;height: 35px;text-align: center;margin-top: 20px;border: 1px solid  #00C091;padding-top: 8px;">{{v.hao}}</p>
+                	<button  style="margin-top: 25px;width:20px;height: 20px;border-radius:20px ;" v-on:click = "delete_one(v.id)" ><span class="glyphicon glyphicon-remove" style="color: white;margin-left: -3px;"></span></button>
+                	<div class="clearfix"></div></div><hr>
+                	<select class="col-md-3 col-sm-3 " id="select_id" style="color: #00C091 ;height: 45px;text-align: center;margin-top: 20px;outline: none;border: 1px solid  #00C091;">
+                		<option value="90%">精通</option>
+                		<option value="80%">熟练</option>
+                		<option value="70%">掌握</option>
+                		<option value="60%">了解</option>
+                	</select>
+                  <input type="text" id="input_id" class="col-md-2 col-sm-2  col-md-offset-1 col-sm-offset-1 " placeholder="添加新技能" style="height: 45px;border-bottom-left-radius:20px;border-top-left-radius:20px;border: 1px solid  #00C091;outline: none;border-right: none;color: rgb(100,220,179);font-size: 14px;background: transparent;margin-top: 20px;">
+        		<button v-on:click=push_one()   class="col-md-1 col-sm-1 " style="float:left;height: 45px;outline: none;background: transparent;border: 1px solid  #00C091;border-left:none ;border-bottom-right-radius:20px;border-top-right-radius:20px;background-repeat: no-repeat;margin-left: -4px;margin-top: 20px;"><span class="glyphicon glyphicon-ok" style="color: #00C091;margin-left: -15px;"></span></button>
+                <div class="clearfix"></div>
+                </div>
+                    <div class="modal-footer">                    	
+                       <button type="button" class="btn btn-default" data-dismiss="modal" style="background-color: rgb(237,237,237);width: 100px;height: 30px;margin-right: 20%;">取消</button>
+                       <button type="button" class="btn btn-primary" data-dismiss="modal" style="background-color: #00C091;border: none;width: 100px;height: 30px;float: left;margin-left: 20%;">保存</button>
+                    </div>
+                 </div>
+                  </div>
+                 </div>
+                 <!-- Modal -->
+		        </div>
+		        <div class="sec_3_main_div" style="padding-left: 10%;padding-bottom: 30px;">
+		        	<button style="margin-right: 10px;" data-toggle="modal" data-target="#myModal_1"><span class="glyphicon glyphicon-pencil" style="color: white;"></span></button><br>
+		        	<img src="../img/20170808142934.png">
+		        	<div style="padding-left: 10px;margin-top:20px ;">
+		        	<img v-for="v in data_3" v-bind:src="v.src" style="margin-bottom: 30px;margin-right: 20%;">
+		        	</div>
+		        </div>
+		        <!-- Modal _1-->
+                 <div class="modal fade" id="myModal_1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                      <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                      <div class="modal-header" style="background-color:#00C091 ;border: none;">
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                          <h4 class="modal-title" id="myModalLabel" style="color: white;">编辑技能特长</h4>
+                    </div>
+                <div class="modal-body " style="padding-top: 20px;">
+                	<p  style="color: black;text-align: center;color:#8d8d8d ;">常用兴趣爱好</p>
+                	<button class="v_for_btn" v-for="v in data_2" v-on:click="add_one(v.id)">
+                	 {{v.name}}
+                	</button>
+                	<p  style="color: black;text-align: center;color:#8d8d8d ;margin-top: 70px;">已添加兴趣爱好</p>
+                	<button class="v_for_btn" v-for="v in data_3" id="v_for_btn_id" v-on:click="cut_one(v.id)">
+                	 {{v.name}}
+                	</button>
+                </div>
+                    <div class="modal-footer">
+                    	<button type="button" class="btn btn-primary" data-dismiss="modal" style="background-color: #00C091;border: none;width: 100px;height: 30px;float: left;margin-left: 20%;">保存</button>
+                       <button type="button" class="btn btn-default" data-dismiss="modal" style="background-color: rgb(237,237,237);width: 100px;height: 30px;margin-right: 20%;">取消</button>                       
+                    </div>
+                 </div>
+                  </div>
+                 </div>
+                 <!-- Modal _1-->
+		   </div>
+		     <!-- 右侧简历-->
+		   <div  id="vue_1" style="border: 2px solid rgb(240,240,240);margin: 0;height: 1350px;padding: 40px 15px;overflow: hidden;background-color: white;width: 553px;float: right;margin-right: 0;" >
+		   	<div class="sec_3_main_right_div hidden-xs" style="height: 110px;">
+		   		<br>
+		   		<p style="font-size: 30px;"><input type="text" style="background: transparent;border: none;width: 20%;"value="那天"><span style="font-size: 14px;color: #878686;margin-left: 15px;"><input type="text" style="background: transparent;border: none;width: 76%;margin: 0;"value="一句话介绍自己，告诉HR为什么选择你而不是别人"></span></p>
+		   	</div>
+		   	<div class="sec_3_main_right_div" id="sec_3_main_right_div_0" style="height: 160px;">		   		
+		   		<img src="../img/20170808151427.png" width="100%" style="margin-top: 20px;">
+		   		<p style="width: 100%;"><span class="glyphicon glyphicon-list-alt" style="margin-right: 5px;"></span><input type="text" value="前端开发" style="width: 15%;">
+		   		<span class="glyphicon glyphicon-bookmark" style="margin-right:5px;margin-left: 15px;"></span><input type="text" value="全职" style="width: 10%;">
+		   		<span class="glyphicon glyphicon-map-marker" style="margin-right:5px;margin-left: 15px;"></span><input type="text" value="珠海" style="width: 10%;">
+		   		<span class="glyphicon glyphicon-check" style="margin-right:5px;margin-left: 15px;"></span><input type="text" value="4K-6K" style="width: 12%;">
+		   		<span class="glyphicon glyphicon-list" style="margin-right:5px;margin-left: 15px;"></span><input type="text" value="随时到岗" style="width: 15%;">
+		   		</p>
+		   		</div>
+		   	<div class="sec_3_main_right_div" id="sec_3_main_right_div_1">		        	
+		        <button style="margin-right: 5px;" v-on:click="delete_one(2)"><span class="glyphicon glyphicon-minus" style="color: white;"></span></button>
+		        <button style="margin-right: 5px;" v-on:click="push_one(2)"><span class="glyphicon glyphicon-plus" style="color: white;"></span></button><br>
+		   		<img src="../img/20170808151444.png" width="100%" style="margin-top: 20px;margin-bottom: 20px;">
+		   		<div  v-for="v in items_2"><input type="text" v-bind:value=v.y style="width: 25%;color: #4b4b4b;">
+		   		<input type="text" v-bind:value=v.u style="width: 40%;color: #4b4b4b;">
+		   		<input type="text" v-bind:value=v.w style="width: 25%;color: #4b4b4b;">
+		   		<textarea   style="width: 100%;margin-top: 10px;margin-bottom: 10px;">主修课程：{{v.m}}</textarea >
+		     	</div></div>
+		    <div class="sec_3_main_right_div" id="sec_3_main_right_div_2" >		   		  	
+		        <button style="margin-right: 5px;" v-on:click="delete_one(0)"><span class="glyphicon glyphicon-minus" style="color: white;"></span></button>
+		        <button style="margin-right: 5px;" v-on:click="push_one(0)"><span class="glyphicon glyphicon-plus" style="color: white;"></span></button><br>
+		   		<img src="../img/20170808151509.png" width="100%" style="margin-top: 20px;margin-bottom: 20px;">
+		   		<div  v-for="v in items">
+		   		<input type="text" v-bind:value=v.y style="width: 25%;color: #4b4b4b;">
+		   		<input type="text" v-bind:value=v.u style="width: 40%;color: #4b4b4b;">
+		   		<input type="text" v-bind:value=v.w style="width: 25%;color: #4b4b4b;">
+                 <textarea  style="width: 100%;margin-top: 10px;margin-bottom: 10px;">主要工作：{{v.m}}</textarea >
+		     	</div></div>
+		    <div class="sec_3_main_right_div" id="sec_3_main_right_div_3">		        	
+		        <button style="margin-right: 5px;" v-on:click="delete_one(1)"><span class="glyphicon glyphicon-minus" style="color: white;"></span></button>
+		        <button style="margin-right: 5px;" v-on:click="push_one(1)"><span class="glyphicon glyphicon-plus" style="color: white;"></span></button><br>
+		   		<img src="../img/20170808151528.png" width="100%" style="margin-top: 20px;margin-bottom: 20px;">
+		    	<ul  >
+		    	  <li v-for="v in items_1" style="margin-top: 5px;"><input style="width: 100%;" v-bind:value=v></li>
+		    	</ul>
+		    </div>
+		    <div class="sec_3_main_right_div" id="sec_3_main_right_div_4">
+		   		<img src="../img/20170808151542.png" width="100%" style="margin-top: 20px;margin-bottom: 20px;">
+		   		<textarea style="width: 100%;" rows="4">为人性格开朗，乐观，抗压能力强，有较强的沟通表达能力和写作能力，对互联网行业有一定的认知，了解产品运营相关的知识，有丰富的运营推广渠道，善于对运营数据进行统计分析。
+		   		</textarea>
+		    </div>
+		    <div class="sec_3_main_right_div" id="sec_3_main_right_div_5" style="display: none;">		        	
+		        <button style="margin-right: 5px;" v-on:click="delete_one(3)"><span class="glyphicon glyphicon-minus" style="color: white;"></span></button>
+		        <button style="margin-right: 5px;" v-on:click="push_one(3)"><span class="glyphicon glyphicon-plus" style="color: white;"></span></button><br>
+		   		<img src="../img/20170814161108.png" width="100%" style="margin-top: 20px;margin-bottom: 20px;">
+		   		<div  v-for="v in items_3">
+		   		<input type="text" v-bind:value=v.y style="width: 25%;color: #4b4b4b;">
+		   		<input type="text" v-bind:value=v.u style="width: 40%;color: #4b4b4b;">
+		   		<input type="text" v-bind:value=v.w style="width: 25%;color: #4b4b4b;">
+                 <textarea  style="width: 100%;margin-top: 10px;margin-bottom: 10px;">{{v.m}}</textarea >
+		     	</div></div>
+		     <div class="sec_3_main_right_div" id="sec_3_main_right_div_6" style="display: none;overflow-x: hidden;" >     	
+		   		<img src="../img/20170814162847.png" width="100%" style="margin-top: 10px;margin-bottom: 20px;">
+		   		<div  v-for="v in items_4" style="margin-top:15px ;position: relative;">
+		   			<input id="img_file_1" type="file" style="width: 400px;height: 200px;display: block;left:28%;position: absolute;opacity: 0;" onchange="handleFiles(this.files,this.id,'img_v_1','400px','200px')" >
+		   		<img v-bind:src=" v.src"  id="img_v_1" style="display: block;margin: 0 auto;width: 400px;height: 200px;" >
+		   		<div style="width: 100%;padding-top:10px;" >
+		   		<input type="text" v-bind:value=v.n style="width: 100%;color: #4b4b4b;text-align: center;"><br>
+                 <textarea  style="width: 100%;margin-top: 7px;" rows="3">{{v.m}}</textarea ></div>
+		     	</div></div>
+		   </div>
+		   </div></div>
+		   <!--右侧导航-->
+		   <div class="col-md-2  col-sm-3   hidden-xs " style="margin-top: 10px;height: 900px;padding-left:5px ;">
+		   	<div style="width: 100%;background-color: rgb(250,250,250);height: 80px;border: 1px solid #f0f0f0;border-bottom: 1px dashed rgb(226,226,226);padding: 25px 10px;font-size: 13px;color: #5a5a5a;">简历访问权限
+		   	<select style="width: 45%;height: 30px;">
+		   		<option>公开</option>
+		   		<option>隐藏</option>
+		   	</select>
+		   	</div>
+		   	<div style="width:100%;background-color: rgb(250,250,250);height: 90px;font-size: 13px;color: #5a5a5a;padding-top: 35px ;padding-left: 5px;border: 1px solid #f0f0f0">简历竞争力：<span style="color:#00C091 ;">20%&nbsp;小有进步</span>
+		   		<div class="progress " style="padding: 0;width: 90%;height: 5px;margin-top: 10px;">
+                            <div class="progress-bar "  role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 20%;background-color: #00C091;">
+                              </div>
+                         </div>
+		   	</div>
+		   	<button class="sec_3_right_btn" style="border: 1px solid #f0f0f0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;创建英文简历</button>
+		    <div style="width: 100%;height: 38px;background-color: rgb(250,250,250);margin-top: 10px;padding: 5% 10%;color: #5a5a5a;border: 1px solid #f0f0f0">模块管理</div>
+		    <div class="sec_3_right_div" id="sec_3_right_div_id" style="height: 500px;border-bottom: none;">
+		    	<div><span class="badge sec_3_right_span"><span class=" glyphicon glyphicon-user"></span></span>基本信息<span class="badge sec_3_right_span_1" >必填</span></div>
+		        <div><span class="badge sec_3_right_span"><span class=" glyphicon glyphicon-heart"></span></span>兴趣爱好<span class="badge sec_3_right_span_1">必填</span></div>
+		        <div><span class="badge sec_3_right_span"><span class=" glyphicon glyphicon-music"></span></span>技能特长<span class="badge sec_3_right_span_1">必填</span></div>		        
+		        <div v-for="v in data1" v-if="v.seen"><span class="badge sec_3_right_span"><span class=" glyphicon" v-bind:class="v.gly"></span></span>{{v.name}}<a v-on:click="cut_one(v.id)"><span class="badge sec_3_right_span_1">x</span></a></div>
+		        <div style="font-size: 18px;color: black;margin: 10px 0;"><span class="badge sec_3_right_span_1" style="float: left;margin-right: 10px;">+</span>添加其他模块</div>
+		        <div v-for="v in data1" v-if="v.seen==false" ><span class="badge sec_3_right_span"><span class=" glyphicon " v-bind:class="v.gly"></span></span>{{v.name}}<a v-on:click="add_one(v.id)"><span class="badge sec_3_right_span_2" >+</span></a></div>
+		        
+		    </div>
+		   </div>
+		</div>
+		<!--预览图-->
+		<div style='height: 100%;width: 100%;overflow: scroll;display: none;position:fixed;background-color: rgb(45,45,45);z-index: 5;top: 0; ' class="container" id="resume_div">
+			<img src="../img/close.png" style="position: fixed;top:0;right: 0;z-index: 5;cursor:pointer;" onclick="$('#resume_div').hide(500)">
+			<img style="margin-top: 50px;" class="col-md-9 col-sm-9"  id="img_3"  >
+			<div class="col-md-3 col-sm-3" style="margin-top: 50px;background-color: white ;padding-top: 50px;">
+				<p style="font-size: 20px;font-family: '微软雅黑';">互联网产品运营简历模板</p>
+				<hr>
+				<button class="v_for_btn" style="width: 50px;height: 30px;margin: 0;border-radius: 5px;">运营</button>
+				<span style="float: right;">使用人数：<span style="color: #00C091;">5230000</span> 人</span>
+				<p style="color: #9C9C9C;margin-top: 10px;">互联网产品运营简历模板下载，适合有互联网产品运营工作经验，出来工作了1-2年，在大公司做过运营方面工作的职场新人。</p>
+			    <button style="height: 50px;margin:20px 0;border-radius: 5px;font-size: 18px;" class="col-md-12 col-sm-12 v_for_btn" onclick="download_img(0)">下载此简历</button>
+			    <p style="font-family: '微软雅黑';">特别说明：</p>
+			    <p style="color:#9C9C9C ;">请使用高版本浏览器下载（目前只有chrome、firefox和opera支持），仅支持PDF与图片格式下载。</p><hr>
+			    <div class="col-md-12 col-sm-12" style="height: 183px;background-image: url(../img/zx_adv.png);background-position-x: -20px;"></div><hr>
+			    <button style="height: 50px;margin:50px 0;border-radius: 5px;font-size: 18px;" class="col-md-12 col-sm-12 v_for_btn" onclick="donload_pdf()">PDF格式下载</button>
+			</div>
+		</div>
+	</body>
+</html>

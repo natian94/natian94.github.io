@@ -1,0 +1,319 @@
+.section{
+	background-size:100% 100%;
+	text-align: center; 
+	color: #fff;
+}
+#topnav{
+padding-top: 20px;
+}
+.section_2{
+	padding-top: 10%;
+}
+.section2 p { 
+	position: relative;
+	left: -120%;
+	}
+#menu {
+    position: fixed; 
+    right: 20px; 
+    top: 50%; 
+    width: 90px; 
+    margin: -160px 0 0;
+    padding: 0; 
+    list-style-type: none; 
+    z-index: 70;
+}
+#menu li { 
+	margin-top: 10px; 
+	background:transparent;
+	border:  2px solid wheat;
+	border-radius:10px ;
+}
+#menu a { 
+	display: block; 
+	padding: 10px 0; 
+	color: navajowhite; 
+	text-align: center; 
+	text-decoration: none;
+	font-family: '隶书';
+	background:transparent;
+}
+#menu .active a { 
+	color: white; 
+}
+.btnleft{
+	position:relative;
+	left: 0;
+	bottom: 0;
+	font-family: '隶书';
+	font-size: 20px;
+	letter-spacing:10px;
+}
+.btnright{
+	position:relative;
+	right: 0;
+	bottom: 0;
+	font-family: '隶书';
+	font-size: 20px;
+	letter-spacing:10px;
+}
+.btndown{
+	background-repeat: no-repeat;
+	border: none;
+	font-size: 18px;
+	text-align: center;
+	color: white;
+	opacity: 1;
+	background: transparent;
+	outline:none;
+	position:relative ;	
+	font-family: '隶书';
+}
+#page1_cont{
+	opacity: 0.8;
+	font-family: '隶书';
+	font-size: 15px;
+	background-color: rgb(210,200,196);
+	text-align: left;
+	padding: 40px 0;
+	padding-left:6% ;
+	border-radius: 20px;
+	margin-top: 7%;
+	display: none;
+}
+#page1_cont a{
+	color: white;
+	letter-spacing:1px;
+	text-decoration: none;
+	padding: 10px 10px;
+	letter-spacing:5px;
+}
+#page1_cont a:hover{
+	color:rgb(255,70,78);	
+}
+.navtop{
+        		height: 70px;
+        		padding-top: 20px;
+        		border-bottom:5px solid rgb(239,239,239) ;
+        	}
+        	.nav_ul{
+        		margin-top: 10px;
+        	}
+        	.nav_ul li{
+        		width: 100px;
+        		text-align:center;
+        		outline: none;
+        		float: left;
+        	    list-style: none;
+        	    margin-left: 10px;
+        	    border-left: 1px solid rgb(195,195,195);
+        	    font-family: '微软雅黑';
+        	    font-size: 14px;        	            	    
+        	}
+        	.nav_ul li a{
+        		text-decoration:none;
+        		color: #666666;
+        	}
+        	.nav_ul li a:hover{
+        		color: rgb(0,192,145);
+        	}
+        	.nav_btn{
+        		border-radius:10px ;
+        		background: transparent;
+        		border: none;
+        		color: white;
+        		background-color: rgb(0,192,145);
+        		width: 50px;
+        		float: right;
+        		margin-right: 2%;
+        		height: 26px;
+        		margin-top: 5px;
+        		outline: none;
+        	}
+        	.main_contain_2{
+        		background-image: url(img/jl_index_bj.gif);
+        		padding-top: 10%;
+        		text-align: center;
+        		padding-bottom: 8%;
+        		background-size:100% 100%;
+        	}
+        	.btn_div{
+        		height: 50px;
+        		border: 1px solid #dee5ee;
+        		text-align: center;        		
+        		background-color: #fff;
+        		position: relative;       		
+        	}  
+        	 .btn_div:hover .div_div {
+        	 	display: block;
+        	 }   	
+        	.btn_div p{
+        		color: #a5b3c4;
+        		font-size: 15px;
+        		font-weight: bold;
+        	}
+        	.btn_div span{
+        		margin-left: 5px;
+        		
+        	}
+        	.div_div{
+        		background-color: rgb(72,209,179);
+        		height: 218px;
+        		display: none;
+        		margin: 0;
+        		position: absolute;
+        		padding-top: 20px;
+        		z-index: 1;
+        		top:8px;
+        	}    
+        	.div_div_btn{
+        		background-color: rgb(255,255,255);
+        		border: none;
+        		height: 36px;
+        		border-radius:10px ;
+        		margin-top: 10px;
+        		width:85px;
+        		color: rgb(72,209,179);
+        		font-family: '隶书';
+        		font-size: 15px;
+        	}   
+        	.div_div_btn:hover{
+        		background-color: rgb(29,177,144);
+        		color: white;
+        	} 	
+        	.input_text{        		
+        		height: 45px;
+        		border-bottom-left-radius:20px;
+        		border-top-left-radius:20px;
+        		border: 1px solid rgb(209,210,219);
+        		outline: none;
+        		border-right: none;
+        		opacity: 0.6;
+        		color: rgb(100,220,179);
+        		font-size: 14px;
+        		background: transparent;
+        	}
+        	.input_btn{
+        		height: 45px;
+        		outline: none;
+        		background: transparent;
+        		border: 1px solid rgb(209,210,219);
+        		border-left:none ;
+        		border-bottom-right-radius:20px;
+        		border-top-right-radius:20px;
+        		background-repeat: no-repeat;
+        		opacity: 0.6;
+        	}
+        	.input_text:hover{
+        		background-color: white;
+        		opacity: 1;
+        	}
+             .sec_2_top{
+        		height: 110px;
+        		background-image: url(../img/daoru_bg.jpg);
+        		padding-top:10px;
+        		margin-bottom: 20px;
+        	}
+        	.sec_2_btn{
+        		font-size: 16px;
+        		color: #fff;
+        		background: #00C091;
+        		border-radius: 40px;
+        		padding: 10px 15px;
+        		border: none;
+        		outline: none;
+        		margin-top: 20px;
+        		margin-bottom: 10px;
+        	}
+        	.sec_2_left{
+        		text-align: center;
+        		border: 1px solid #ebebeb;
+        		border-right:none ;
+        		background: #fafafa;         		  		
+        	}
+        	.sec_2_left button{
+        		color: #fff;
+        		background: #00C091;
+        		border: none;
+        		outline: none;
+        		height: 36px;
+        		border-radius:5px ;
+        	}
+        	.sec_2_left_div{
+        		padding-top: 20px;
+        		padding-left: 20px;
+        		text-align: left;
+        		font-size: 20px;
+        		position: relative; 
+        		color: #272727;         		
+        	}
+        	.sec_2_left_div:hover{
+        		border: 1px solid rgb(0,192,145);
+        		background-color: white;
+        		border-right:none ;
+        	}
+        	.sec_2_left_div a{
+        		font-size:  14px;
+        		color: #555;
+        		line-height: 24px;
+        		text-decoration: none;
+        	}
+        	.sec_2_left_div a:hover{
+        		color: rgb(0,192,145);
+        	}
+        	.div_show{
+        		width: 50px;
+        		height: 106px;
+        		position: absolute;
+        		top: -1px;
+        		left: 100%;
+        		border: 1px solid rgb(0,192,145);
+        		border-left:none ;
+        		border-right: none;
+        		display: none;
+        		z-index: 5;
+        		background-color: white;
+        	}
+        	.div_show_1{
+        		position: absolute;
+        		width: 450px;
+        		height: 425px;
+        		display: none;
+        		top:-1px;
+        		left: 123%;
+        		border: 1px solid rgb(0,192,145);
+        		border-left:none ;
+        		z-index: 5;
+        		background-color: white;
+}
+.sec_2_left_div:hover .div_show{
+    display: block;
+}
+.sec_2_left_div:hover .div_show_1{
+display: block;
+}
+.div_show_1 div{
+width: 100%;
+height: 106px;
+border-left:1px solid  rgb(0,192,145);
+padding: 20px;
+font-size: 15px;
+}
+.div_show_1 div a{
+	padding-top: 15px;
+	font-size: 15px;
+	margin-right: 12px;
+	color: #777;
+}
+.sec_2_mouse_en{
+	opacity: 0;
+}
+.sec_2_mouse_en:hover{
+	opacity: 0.8;
+}
+.sec_2_mouse_out{
+	opacity: 0;
+}
+.sec_2_mouse_out:hover{
+	opacity: 0.8;
+}
